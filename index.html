@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBN / Townhall in mezzo ai vigneti</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a0a00; font-family: 'Lato', Arial, sans-serif; min-height: 100vh; }
+.stars-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1a0a00 0%, #2d1500 40%, #1a0800 100%); z-index: 0; overflow: hidden; }
+.stars-bg::before, .stars-bg::after { content: ''; position: absolute; width: 100%; height: 100%; background-image: radial-gradient(1px 1px at 10% 15%, rgba(255,230,150,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 25% 60%, rgba(255,230,150,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 45% 25%, rgba(255,230,150,0.7) 0%, transparent 100%), radial-gradient(1px 1px at 70% 80%, rgba(255,230,150,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 85% 10%, rgba(255,230,150,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 60% 45%, rgba(255,230,150,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 90% 55%, rgba(255,230,150,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 15% 90%, rgba(255,230,150,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 35% 5%, rgba(255,230,150,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 78% 30%, rgba(255,230,150,0.5) 0%, transparent 100%); animation: twinkle 4s infinite alternate; }
+.stars-bg::after { background-image: radial-gradient(1px 1px at 5% 40%, rgba(255,230,150,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 55% 70%, rgba(255,230,150,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 80% 65%, rgba(255,230,150,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 20% 50%, rgba(255,230,150,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 95% 85%, rgba(255,230,150,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 40% 95%, rgba(255,230,150,0.4) 0%, transparent 100%); animation: twinkle 6s infinite alternate-reverse; }
+@keyframes twinkle { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+.email-wrapper { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 20px 16px 40px; }
+.hero { background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%), url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=680&q=80') center/cover no-repeat; border-radius: 20px 20px 0 0; padding: 50px 40px 40px; text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(180,130,50,0.3); border-bottom: none; min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(100,50,0,0.4) 0%, rgba(80,30,0,0.7) 100%); }
+.vine-deco { position: absolute; font-size: 60px; opacity: 0.15; animation: sway 5s ease-in-out infinite; }
+.vine-deco.left { left: -10px; top: 20px; transform-origin: top center; }
+.vine-deco.right { right: -10px; top: 20px; transform-origin: top center; animation-delay: 1s; }
+@keyframes sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+.hero-logo { position: relative; margin-bottom: 14px; }
+.hero-logo img { height: 52px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
+.badge { position: relative; display: inline-block; background: rgba(180,130,50,0.25); border: 1px solid rgba(200,160,70,0.6); color: #f5d87a; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 18px; border-radius: 20px; margin-bottom: 16px; font-family: 'Lato', sans-serif; font-weight: 700; animation: fadeInDown 1s ease both; }
+.hero-title { position: relative; font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 8px; animation: fadeInUp 1s ease 0.3s both; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+.hero-subtitle { position: relative; font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: #f5d87a; margin-bottom: 24px; animation: fadeInUp 1s ease 0.5s both; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
+.hero-date-box { position: relative; background: rgba(180,130,50,0.3); backdrop-filter: blur(8px); border: 1px solid rgba(200,160,70,0.5); border-radius: 12px; padding: 14px 28px; display: inline-block; animation: fadeInUp 1s ease 0.7s both; }
+.hero-date { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+.hero-time { font-size: 13px; color: #f5d87a; letter-spacing: 2px; margin-top: 3px; }
+.card-body { background: #fff; border-radius: 0 0 20px 20px; border: 1px solid rgba(180,130,50,0.3); border-top: none; padding: 0 40px 40px; overflow: hidden; }
+.gold-bar { height: 4px; background: linear-gradient(90deg, #8B6914, #D4AF37, #F5D87A, #D4AF37, #8B6914); margin: 0 -40px 32px; }
+.intro { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 32px; text-align: center; padding: 0 10px; }
+.intro strong { color: #7a4f00; }
+.location-box { background: linear-gradient(135deg, #fdf6e3, #fef9ee); border: 1px solid #d4af37; border-radius: 14px; padding: 18px 22px; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+.location-icon { font-size: 32px; flex-shrink: 0; }
+.location-text h3 { font-family: 'Playfair Display', serif; font-size: 17px; color: #5a3800; margin-bottom: 3px; }
+.location-text p { font-size: 12px; color: #888; margin-bottom: 6px; }
+.location-text a { display: inline-block; background: #7a4f00; color: #fff; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 6px 14px; border-radius: 20px; }
+.location-text a:hover { background: #d4af37; }
+.agenda-title { font-family: 'Playfair Display', serif; font-size: 24px; color: #5a3800; text-align: center; margin-bottom: 20px; }
+.agenda-title::after { content: ''; display: block; width: 60px; height: 2px; background: linear-gradient(90deg, #d4af37, #f5d87a); margin: 6px auto 0; border-radius: 2px; }
+.agenda-list { list-style: none; padding: 0; margin-bottom: 32px; }
+.agenda-item { display: flex; gap: 18px; padding: 13px 0; border-bottom: 1px solid #f0e8d0; align-items: flex-start; transition: transform 0.2s; }
+.agenda-item:last-child { border-bottom: none; }
+.agenda-item:hover { transform: translateX(4px); }
+.agenda-time { min-width: 90px; font-weight: 700; font-size: 12px; color: #d4af37; flex-shrink: 0; padding-top: 2px; }
+.agenda-icon { font-size: 22px; flex-shrink: 0; }
+.agenda-desc { flex: 1; }
+.agenda-desc strong { display: block; color: #3d2600; font-size: 14px; margin-bottom: 2px; }
+.agenda-desc span { font-size: 12px; color: #888; font-style: italic; line-height: 1.5; }
+/* Buffet highlight box */
+.buffet-box { background: linear-gradient(135deg, #3d2600, #5a3800); border-radius: 14px; padding: 18px 22px; margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+.buffet-box .buffet-icon { font-size: 36px; flex-shrink: 0; }
+.buffet-box .buffet-text h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: #f5d87a; margin-bottom: 4px; }
+.buffet-box .buffet-text p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+.highlights { display: flex; gap: 14px; margin-bottom: 32px; }
+.highlight-card { flex: 1; background: linear-gradient(135deg, #fdf6e3, #fef9ee); border: 1px solid #e8d080; border-radius: 14px; padding: 18px 14px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+.highlight-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(180,130,0,0.15); }
+.highlight-card .emoji { font-size: 28px; margin-bottom: 8px; }
+.highlight-card h4 { font-size: 13px; font-weight: 700; color: #5a3800; margin-bottom: 4px; }
+.highlight-card p { font-size: 11px; color: #888; line-height: 1.45; }
+.info-row { display: flex; gap: 12px; margin-bottom: 32px; }
+.info-pill { flex: 1; background: #fff; border: 1px solid #e8d080; border-radius: 12px; padding: 12px 10px; text-align: center; font-size: 11px; color: #666; }
+.info-pill .ep { font-size: 20px; margin-bottom: 5px; }
+.info-pill strong { display: block; color: #5a3800; font-size: 12px; margin-bottom: 3px; }
+.music-box { background: linear-gradient(135deg, #f9f3e3, #fff8e8); border: 1px solid #e8d080; border-radius: 14px; padding: 18px 22px; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+.music-box .music-icon { font-size: 36px; }
+.music-box h4 { font-size: 14px; font-weight: 700; color: #5a3800; margin-bottom: 3px; }
+.music-box p { font-size: 12px; color: #888; }
+.music-band { display: inline-block; background: #5a3800; color: #f5d87a; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 10px; margin-top: 5px; font-family: 'Playfair Display', serif; }
+.dresscode-banner { background: linear-gradient(135deg, #3d2600, #5a3800); border-radius: 14px; padding: 22px 26px; text-align: center; margin-bottom: 32px; position: relative; overflow: hidden; }
+.dresscode-banner::before { content: '🤠'; position: absolute; font-size: 80px; opacity: 0.08; left: -10px; top: -10px; }
+.dresscode-banner::after { content: '🤠'; position: absolute; font-size: 80px; opacity: 0.08; right: -10px; bottom: -10px; }
+.dresscode-banner .label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #d4af37; margin-bottom: 6px; font-weight: 700; }
+.dresscode-banner .value { font-family: 'Playfair Display', serif; font-size: 30px; color: #fff; font-weight: 700; }
+.dresscode-banner .note { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+.cta-box { background: linear-gradient(135deg, #fff8e8, #fdf0d0); border: 2px solid #d4af37; border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 24px; }
+.cta-box h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: #5a3800; margin-bottom: 7px; }
+.cta-box p { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 14px; }
+.cta-deadline { display: inline-block; background: #c0392b; color: #fff; font-weight: 700; font-size: 15px; padding: 9px 24px; border-radius: 30px; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(192,57,43,0.3); animation: pulse 2.5s infinite; }
+@keyframes pulse { 0%, 100% { box-shadow: 0 4px 15px rgba(192,57,43,0.3); transform: scale(1); } 50% { box-shadow: 0 4px 25px rgba(192,57,43,0.5); transform: scale(1.02); } }
+.cta-info { font-size: 12px; color: #c0392b; margin-top: 12px; line-height: 1.6; font-weight: 700; }
+.footer { text-align: center; padding: 24px 20px 0; color: rgba(255,255,255,0.5); font-size: 11px; line-height: 2; }
+.footer a { color: #d4af37; text-decoration: none; }
+.footer-logo { margin-bottom: 10px; }
+.footer-logo img { height: 38px; opacity: 0.85; }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 480px) {
+.hero { padding: 36px 18px 30px; min-height: 240px; }
+.hero-title { font-size: 28px; }
+.hero-subtitle { font-size: 16px; }
+.card-body { padding: 0 18px 24px; }
+.highlights { flex-direction: column; }
+.info-row { flex-direction: column; }
+.gold-bar { margin: 0 -18px 24px; }
+.location-box { flex-direction: column; text-align: center; }
+.buffet-box { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="stars-bg"></div>
+<div class="email-wrapper">
+
+<div class="hero">
+  <span class="vine-deco left">🍇</span>
+  <span class="vine-deco right">🍷</span>
+  <div class="hero-logo"><img src="https://montedellevigne.it/wp-content/uploads/2020/05/MdV-logo-white-trasp-no-foglia.png" alt="Monte delle Vigne"></div>
+  <div class="badge">📋 Invito Ufficiale ai Dipendenti</div>
+  <h1 class="hero-title">CBN / Townhall<br>in mezzo ai vigneti</h1>
+  <p class="hero-subtitle">Un giorno tra natura, vino e musica</p>
+  <div class="hero-date-box">
+    <div class="hero-date">🗓️ Venerdì 19 Giugno 2025</div>
+    <div class="hero-time">ORE 09:00 – 15:30</div>
+  </div>
+</div>
+
+<div class="card-body">
+  <div class="gold-bar"></div>
+
+  <p class="intro">
+    Siamo lieti di invitarti a trascorrere una <strong>giornata speciale</strong> immersi
+    tra le vigne dei Colli di Parma. Un'occasione unica per ritrovarci tutti insieme,
+    condividere e celebrare il nostro lavoro in un contesto davvero magico. 🍇
+  </p>
+
+  <div class="location-box">
+    <div class="location-icon">📍</div>
+    <div class="location-text">
+      <h3>Monte delle Vigne</h3>
+      <p>Via Monticello, 22 — Ozzano Taro (PR) — Collecchio</p>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Monte+delle+Vigne+Via+Monticello+22+Ozzano+Taro+Parma" target="_blank">🗺️ Come arrivare con Google Maps</a>
+      &nbsp;&nbsp;
+      <a href="https://montedellevigne.it" target="_blank" style="background:#d4af37;">🌐 Sito ufficiale</a>
+    </div>
+  </div>
+
+  <h2 class="agenda-title">🗓 Programma della Giornata</h2>
+  <ul class="agenda-list">
+    <li class="agenda-item">
+      <span class="agenda-time">09:00</span>
+      <span class="agenda-icon">☕</span>
+      <div class="agenda-desc">
+        <strong>Arrivo e Registrazione Presenza</strong>
+        <span>Benvenuto e accoglienza</span>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-time">09:30 – 10:30</span>
+      <span class="agenda-icon">🎤</span>
+      <div class="agenda-desc">
+        <strong>Townhall — Sessione Plenaria</strong>
+        <span>La presenza all'intera sessione è necessaria ai fini dell'assenza senza utilizzo di ferie</span>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-time">10:30 – 12:30</span>
+      <span class="agenda-icon">🍷</span>
+      <div class="agenda-desc">
+        <strong>Attività a scelta (facoltative)</strong>
+        <span>Passeggiata sulla Via Francigena tra i vigneti con guida ambientale esperta 🚶🌿 &nbsp;|&nbsp; Visita guidata alla cantina 🏛️ &nbsp;|&nbsp; o entrambe!</span>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-time">12:30</span>
+      <span class="agenda-icon">🍽️</span>
+      <div class="agenda-desc">
+        <strong>Pranzo — Ricco Buffet e Grigliata sulla Terrazza Panoramica</strong>
+        <span>Buffet ricco, grigliata per tutti, salumi, formaggi, prosciutto e specialità tipiche parmensi</span>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-time">15:00</span>
+      <span class="agenda-icon">👋</span>
+      <div class="agenda-desc">
+        <strong>Chiusura dell'evento</strong>
+        <span>Arrivederci al prossimo incontro!</span>
+      </div>
+    </li>
+  </ul>
+
+  <!-- BUFFET HIGHLIGHT BOX -->
+  <div class="buffet-box">
+    <div class="buffet-icon">🔥</div>
+    <div class="buffet-text">
+      <h4>Pranzo Ricco Buffet e Grigliata per Tutti!</h4>
+      <p>Dalle 12:30 sulla terrazza panoramica della cantina — salumi, formaggi, prosciutto,<br>grigliata e specialità tipiche parmensi con vista sui vigneti 🍷</p>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-card">
+      <div class="emoji">🚶</div>
+      <h4>Via Francigena tra i Vigneti</h4>
+      <p>Con guida ambientale esperta<br><em>Scarpe ginniche consigliate</em></p>
+    </div>
+    <div class="highlight-card">
+      <div class="emoji">🏛️</div>
+      <h4>Visita alla Cantina</h4>
+      <p>Scopri i segreti della vinificazione biologica</p>
+    </div>
+    <div class="highlight-card">
+      <div class="emoji">🔥</div>
+      <h4>Buffet &amp; Grigliata</h4>
+      <p>Sulla terrazza panoramica con vista sui vigneti</p>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-pill">
+      <div class="ep">🚌</div>
+      <strong>Navetta disponibile</strong>
+      Da Ozzano Taro →<br>Monte delle Vigne (3 km)
+    </div>
+    <div class="info-pill">
+      <div class="ep">🥗</div>
+      <strong>Intolleranze alimentari</strong>
+      Segnalale nel<br>coupon di risposta
+    </div>
+    <div class="info-pill">
+      <div class="ep">📋</div>
+      <strong>Assenza senza ferie</strong>
+      Partecipa all'intera<br>sessione Townhall
+    </div>
+  </div>
+
+  <div class="music-box">
+    <div class="music-icon">🎵</div>
+    <div>
+      <h4>Musica dal vivo tutto il giorno!</h4>
+      <p>La giornata sarà allietata da un gruppo country live</p>
+      <span class="music-band">🤠 Western Girls</span>
+    </div>
+  </div>
+
+  <div class="dresscode-banner">
+    <p class="label">Dress Code</p>
+    <p class="value">🤠 COUNTRY! 🤠</p>
+    <p class="note">Vesti in stile western — stivali e cappelli benvenuti!</p>
+  </div>
+
+  <div class="cta-box">
+    <h3>📬 Riconsegna l'Invito entro:</h3>
+    <p>
+      Compila il coupon sul <strong>retro dell'invito stampato</strong> e consegnalo al tuo
+      <strong>Caporeparto</strong> indicando: partecipazione, attività scelte, intolleranze
+      alimentari e preferenza trasporto.
+    </p>
+    <div class="cta-deadline">⏰ Entro il 1° Giugno</div>
+    <p class="cta-info">
+      📌 Consegna l'invito anche in caso di non partecipazione<br>
+      ⚠️ In caso di impossibilità all'ultimo minuto, avvisa il tuo supervisor o l'Ufficio HR
+    </p>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-logo"><img src="https://montedellevigne.it/wp-content/uploads/2020/05/MdV-logo-white-trasp-no-foglia.png" alt="Monte delle Vigne"></div>
+  Via Monticello, 22 — Ozzano Taro (PR)<br>
+  <a href="https://montedellevigne.it">montedellevigne.it</a> ·
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Monte+delle+Vigne+Via+Monticello+22+Ozzano+Taro+Parma">Come arrivare</a><br><br>
+  Questo è un invito riservato ai dipendenti. Per informazioni contatta l'Ufficio HR.
+</div>
+
+</div>
+</body>
+</html>
